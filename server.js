@@ -5,6 +5,8 @@ const path = require('path');
 const express = require('express');
 const app = express();
 
+const allNotes = require('./Develop/db/db.json')
+
 function makeNewNote(body, notesArray){
     const newNote = body;
     if(!Array.isArray(notesArray))
@@ -17,7 +19,7 @@ function makeNewNote(body, notesArray){
 
     notesArray.push(newNote);
     fs.writeFileSync(
-        path.join(__dirname, './db/db.json'),
+        path.join(__dirname, './db.db.json'),
         JSON.stringify(notesArray, null, 2)
     );
     return newNote
